@@ -200,7 +200,7 @@
     }
     @media (max-width: 480px) {
       .details-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
       .detail-row {
         flex-direction: column;
@@ -219,82 +219,82 @@
   </style>
 </head>
 <body>
-<div class="matrix-rain" id="matrixRain"></div>
-<div class="content">
-  <div class="header">
-    <div class="status-indicator"><span class="status-dot"></span>MISSIONE COMPLETATA</div>
-    <h1 class="graduate-name">Pasquale Sorrentino</h1>
-    <div class="achievement">LAUREA RAGGIUNTA!</div>
-    <div class="celebration-text">Festeggiamo insieme questo traguardo!</div>
-    <div class="degree-info">Informatica per le aziende digitali L-31</div>
-  </div>
-  <div class="event-details">
-    <div class="details-grid">
-      <div class="details-row">
-        <div class="detail-row">
-          <div class="detail-icon" aria-hidden="true">📅</div>
-          <div class="detail-label">DATA:</div>
-          <div class="detail-value">Esempio data</div>
+  <div class="matrix-rain" id="matrixRain"></div>
+  <div class="content">
+    <div class="header">
+      <div class="status-indicator"><span class="status-dot"></span>MISSIONE COMPLETATA</div>
+      <h1 class="graduate-name">Pasquale Sorrentino</h1>
+      <div class="achievement">LAUREA RAGGIUNTA!</div>
+      <div class="celebration-text">Festeggiamo insieme questo traguardo!</div>
+      <div class="degree-info">Informatica per le aziende digitali L-31</div>
+    </div>
+    <div class="event-details">
+      <div class="details-grid">
+        <div class="details-row">
+          <div class="detail-row">
+            <div class="detail-icon" aria-hidden="true">📅</div>
+            <div class="detail-label">DATA:</div>
+            <div class="detail-value">Esempio data</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon" aria-hidden="true">🕐</div>
+            <div class="detail-label">ORA:</div>
+            <div class="detail-value">Esempio ora</div>
+          </div>
         </div>
         <div class="detail-row">
-          <div class="detail-icon" aria-hidden="true">🕐</div>
-          <div class="detail-label">ORA:</div>
-          <div class="detail-value">Esempio ora</div>
+          <div class="detail-icon" aria-hidden="true">📍</div>
+          <div class="detail-label">LUOGO:</div>
+          <div class="detail-value"><a href="https://google.it" target="_blank">Esempio luogo</a></div>
         </div>
-      </div>
-      <div class="detail-row">
-        <div class="detail-icon" aria-hidden="true">📍</div>
-        <div class="detail-label">LUOGO:</div>
-        <div class="detail-value"><a href="https://google.it" target="_blank">Esempio luogo</a></div>
       </div>
     </div>
+    <div class="footer-message">
+      <div>Non vediamo l'ora di festeggiare con te!<br>Conferma la tua partecipazione:</div>
+      <a class="rsvp-button" href="TUO_LINK_GOOGLE_FORM" target="_blank">Conferma Partecipazione</a>
+      <div class="signature">// Designed & coded by Pasquale Sorrentino</div>
+    </div>
   </div>
-  <div class="footer-message">
-    <div>Non vediamo l'ora di festeggiare con te!<br>Conferma la tua partecipazione:</div>
-    <a class="rsvp-button" href="TUO_LINK_GOOGLE_FORM" target="_blank">Conferma Partecipazione</a>
-    <div class="signature">// Designed & coded by Pasquale Sorrentino</div>
-  </div>
-</div>
-<script>
-  function createMatrixRain() {
-    const matrix = document.getElementById('matrixRain');
-    const chars = '01';
-    const columnWidth = 25;
-    const columns = Math.floor(window.innerWidth / columnWidth);
-    matrix.innerHTML = '';
-    const maxColumns = window.innerWidth <= 768 ? Math.min(columns, 20) : columns;
-    for (let i = 0; i < maxColumns; i++) {
-      const column = document.createElement('div');
-      column.className = 'matrix-column';
-      column.style.left = i * columnWidth + 'px';
-      column.style.animationDuration = (Math.random() * 4 + 3) + 's';
-      column.style.animationDelay = (Math.random() * 3) + 's';
-      let text = '';
-      const length = Math.random() * 20 + 8;
-      for (let j = 0; j < length; j++) {
-        text += chars[Math.floor(Math.random() * chars.length)] + '\n';
-      }
-      column.textContent = text;
-      column.style.opacity = (Math.random() * 0.1 + 0.05).toString();
-      matrix.appendChild(column);
-    }
-  }
-  createMatrixRain();
-  window.addEventListener('resize', createMatrixRain);
-  const updateInterval = window.innerWidth <= 768 ? 1500 : 800;
-  setInterval(() => {
-    const columns = document.querySelectorAll('.matrix-column');
-    const randomColumn = columns[Math.floor(Math.random() * columns.length)];
-    if (randomColumn) {
+  <script>
+    function createMatrixRain() {
+      const matrix = document.getElementById('matrixRain');
       const chars = '01';
-      let text = '';
-      const length = Math.random() * 20 + 8;
-      for (let j = 0; j < length; j++) {
-        text += chars[Math.floor(Math.random() * chars.length)] + '\n';
+      const columnWidth = 25;
+      const columns = Math.floor(window.innerWidth / columnWidth);
+      matrix.innerHTML = '';
+      const maxColumns = window.innerWidth <= 768 ? Math.min(columns, 20) : columns;
+      for (let i = 0; i < maxColumns; i++) {
+        const column = document.createElement('div');
+        column.className = 'matrix-column';
+        column.style.left = i * columnWidth + 'px';
+        column.style.animationDuration = (Math.random() * 4 + 3) + 's';
+        column.style.animationDelay = (Math.random() * 3) + 's';
+        let text = '';
+        const length = Math.random() * 20 + 8;
+        for (let j = 0; j < length; j++) {
+          text += chars[Math.floor(Math.random() * chars.length)] + '\n';
+        }
+        column.textContent = text;
+        column.style.opacity = (Math.random() * 0.1 + 0.05).toString();
+        matrix.appendChild(column);
       }
-      randomColumn.textContent = text;
     }
-  }, updateInterval);
-</script>
+    createMatrixRain();
+    window.addEventListener('resize', createMatrixRain);
+    const updateInterval = window.innerWidth <= 768 ? 1500 : 800;
+    setInterval(() => {
+      const columns = document.querySelectorAll('.matrix-column');
+      const randomColumn = columns[Math.floor(Math.random() * columns.length)];
+      if (randomColumn) {
+        const chars = '01';
+        let text = '';
+        const length = Math.random() * 20 + 8;
+        for (let j = 0; j < length; j++) {
+          text += chars[Math.floor(Math.random() * chars.length)] + '\n';
+        }
+        randomColumn.textContent = text;
+      }
+    }, updateInterval);
+  </script>
 </body>
 </html>
